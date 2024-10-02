@@ -1,0 +1,92 @@
+.shop-content {
+    padding: 0px 20px;
+
+    .content__list--product {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+        gap: 10px;
+
+        .list-item {
+            max-width: 100px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 16px;
+            background: #06000E;
+            border: 2px solid #2C2037;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+
+            .item__img {
+                width: 70px;
+            }
+
+            .item__name {
+                font-size: 14px;
+                margin-top: 10px;
+            }
+
+            .item__price {
+                font-size: 12px;
+            }
+        }
+    }
+
+    .content__filter--item {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: center;
+
+        .filter__name {
+            font-size: 16px;
+        }
+
+        .filter__dropdown {
+            position: relative;
+            min-width: 50px;
+            max-width: 400px;
+            height: 30px;
+            border-radius: 16px;
+            padding: 5px 12px;
+            background: #06000E;
+            border: 2px solid #2C2037;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .dropdown__value {
+                color: #FEC64F;
+                white-space:nowrap;
+            }
+
+            .dropdown__drop {
+                position: absolute;
+                top: 120%;
+                right: 0px;
+                min-width: 150px;
+                z-index: 999;
+                padding: 10px;
+                background: #06000E;
+                border: 2px solid #2C2037;
+                border-radius: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+
+                .drop-item {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .content__filter--item:nth-child(2) {
+        margin-top: 20px;
+    }
+}

@@ -51,3 +51,10 @@ export interface BoostListType {
     show_count: boolean,
     price: string
 }
+
+export interface ShopListFilterType {
+    id: number,
+    name: string,
+    filter_name?: string,
+    category_name?: string
+}

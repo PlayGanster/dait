@@ -5,8 +5,12 @@ import WEAR_IMG from "@assets/img/home/wear.png"
 import SHOE_IMG from "@assets/img/home/shoe.png"
 import CART_IMG from "@assets/img/home/cart.png"
 import ClickerCoin from "./clicker-coin"
+import { useNavigate } from "react-router-dom"
 
 const ContentClicker = () => {
+
+    const navigate = useNavigate()
+
   return (
     <div className="content__clicker">
       <ul className="clicker__menu">
@@ -22,7 +26,7 @@ const ContentClicker = () => {
         <li className="menu-item">
             <img className="item__img" src={SHOE_IMG} />
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => navigate("/shop")}>
             <img className="item__img" src={CART_IMG} />
         </li>
       </ul>
