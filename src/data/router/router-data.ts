@@ -43,6 +43,7 @@ const SettingsPage = React.lazy(() => import("@pages/settings/settings"))
 const BoostPage = React.lazy(() => import("@pages/boost/boost"))
 const ShopPage = React.lazy(() => import("@pages/shop/shop"))
 const FriendPage = React.lazy(() => import("@pages/friend/friend"))
+const HeadPage = React.lazy(() => import("@pages/head/head"))
 
 export const RouterList: RouterType[] = [
     {
@@ -68,5 +69,10 @@ export const RouterList: RouterType[] = [
         id: 5,
         path: "/friends",
         component: FriendPage
+    },
+    {
+        id: 6,
+        path: "/head",
+        component: HeadPage
     }
 ]

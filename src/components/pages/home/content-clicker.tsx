@@ -17,7 +17,7 @@ const ContentClicker = () => {
         <li className="menu-item">
             <img className="item__img" src={CARD_IMG} />
         </li>
-        <li className="menu-item">
+        <li className="menu-item" onClick={() => navigate("/head")}>
             <img className="item__img" src={FACE_IMG} />
         </li>
         <li className="menu-item">
