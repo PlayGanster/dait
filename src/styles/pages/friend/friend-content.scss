@@ -1,0 +1,67 @@
+.friend-content {
+    padding: 0px 20px;
+
+    .content-text--leader {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        font-size: 20px;
+    }
+
+    .content-text--subleader {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .content-list {
+        margin-top: 20px;
+        flex-direction: column;
+        gap: 20px;
+        display: flex;
+
+        .list-item {
+            padding: 15px 20px;
+            border-radius: 16px;
+            background: #130A1B;
+            border: 2px solid #2C2037;
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+
+            .item__name {
+                font-size: 16px;
+                color: #FEC64F;
+            }
+
+            .item__get {
+                font-size: 14px;
+            }
+        }
+
+        .list-item.--buttons {
+            flex-direction: row;
+
+            .item__button.--send {
+                width: 100%;
+                border-radius: 16px;
+                border: none;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size: 22px;
+                background: #565FF6;
+                cursor: pointer;
+            }
+
+            .item__button.--copy {
+                padding: 20px;
+                border-radius: 16px;
+                border: none;
+                background: #565FF6;
+                cursor: pointer;
+            }
+        }
+    }
+}
