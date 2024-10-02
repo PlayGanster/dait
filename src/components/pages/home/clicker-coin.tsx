@@ -1,7 +1,7 @@
 import { ReactNode, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import cn from 'classnames'
-import COIN_IMG from "../../../assets/img/home/avatar.png"
+import COIN_IMG from "@assets/img/home/avatar.png"
 import "@styles/pages/home/clicker-coin.scss"
 
 interface NotcoinProps {
