@@ -9,8 +9,8 @@
     align-items: center;
 
     .header__avatar--user {
-        width: 42px;
-        height: 42px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         border: 1px solid #3D444D;
         background-size: cover;
@@ -25,13 +25,13 @@
         gap: 5px;
 
         .info__username {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 900;
             color: #F0F6FC;
         }
 
         .info__name {
-            font-size: 13px;
+            font-size: 11px;
             color: #F0F6FC;
         }
     }

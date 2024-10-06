@@ -13,12 +13,12 @@ const HomeContent = () => {
                 <p className="item__amount">72</p>
             </li>
             <li className="info-item">
-                <img className="item__icon" src={MONEY_IMG} />
-                <p className="item__amount">189 921</p>
-            </li>
-            <li className="info-item">
                 <img className="item__icon" src={FIRE_IMG} />
                 <p className="item__amount">142</p>
+            </li>
+            <li className="info-item">
+                <img className="item__icon" src={MONEY_IMG} />
+                <p className="item__amount">189 921</p>
             </li>
         </ul>
         <ContentClicker />

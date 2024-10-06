@@ -1,15 +1,28 @@
 .home-content {
     padding: 20px;
     height: calc(100dvh - 60px);
-    overflow-y: auto;
+    overflow-y: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding-bottom: 111px;
+    background: #000;
+    position: relative;
+
+    &::before {
+        content: "";
+        width: 0;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        -webkit-box-shadow: 0px 0px 150px 150px rgba(255, 255, 255, 0.075);
+        -moz-box-shadow: 0px 0px 150px 150px rgba(255, 255, 255, 0.075);
+        box-shadow: 0px 0px 150px 150px rgba(255, 255, 255, 0.075);
+    }
 
     .content__info {
         display: flex;
-        max-width: max-content;
+        max-width: 500px;
         margin: 0 auto;
         justify-content: center;
         align-items: center;
@@ -17,6 +30,7 @@
         border: 1px solid #3D444D;
         border-radius: 6px;
         padding: 7px 14px;
+        z-index: 2;
 
         .info-item {
             display: flex;
