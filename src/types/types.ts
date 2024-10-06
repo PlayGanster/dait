@@ -21,40 +21,22 @@ export interface CoinNumbersType {
     y_position: number
 }
 
-export interface SettingsListSelectType {
+export interface SettingsListType {
     id: number,
+    value: string,
+    open: boolean | null,
     name: string,
+    id_values: number | null,
+    type: string,
+    text_button?:string
+}
+
+export interface SettingsValueType {
+    id: number,
     value: string
 }
 
-export interface SettingsListSelectDataPopupType {
-    data: SettingsListSelectPopupType[],
-    id_select: number
-}
-
-export interface SettingsListSelectPopupType {
+export interface SettingsValuesType {
     id: number,
-    value: string,
-}
-
-export interface SettingsListSwitchesType {
-    id: number,
-    name: string,
-    active: boolean
-}
-
-export interface BoostListType {
-    id: number,
-    name: string,
-    count: number,
-    img: string,
-    show_count: boolean,
-    price: string
-}
-
-export interface ShopListFilterType {
-    id: number,
-    name: string,
-    filter_name?: string,
-    category_name?: string
+    values: SettingsValueType[],
 }

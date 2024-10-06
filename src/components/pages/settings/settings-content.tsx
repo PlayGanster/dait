@@ -1,89 +1,88 @@
-import PopupFull from "@/components/shared/popup-full"
-import { SettingsListSelect, SettingsListSelectDataPopup, SettingsListSwitches } from "@/data/settings/settings-data"
-import { SettingsListSelectDataPopupType, SettingsListSelectPopupType, SettingsListSelectType, SettingsListSwitchesType } from "@/types/types"
+import { SettingsList, SettingsValuesList } from "@/data/settings/settings-data"
+import { SettingsListType, SettingsValueType, SettingsValuesType } from "@/types/types"
 import "@styles/pages/settings/settings-content.scss"
 import { useEffect, useState } from "react"
-import { MdArrowForwardIos } from "react-icons/md"
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
 
 const SettingsContent = () => {
-
-    const [selectPopupFull, setSelectPopupFull] = useState<number | null>(null)
-    const [switches, setSwitches] = useState<SettingsListSwitchesType[]>([])
+    const [list, setList] = useState<SettingsListType[]>([])
 
     useEffect(() => {
-        setSwitches(SettingsListSwitches)
+        setList(SettingsList)
     }, [])
 
-    function activeSwitch(id: number) {
-        const copy = [...switches]
-        copy.filter((el:SettingsListSwitchesType) => {
+    function openDropdown(id: number) {
+        const copy: SettingsListType[] = [...list];
+        copy.filter((el: SettingsListType) => {
+            if(el.id === id) el.open = !el.open
+            else el.open = false
+        })
+        setList(copy)
+    }
+
+    function selectValue(value: string, id: number, event: any) {
+        event.stopPropagation()
+        const copy:SettingsListType[] = [...list];
+        copy.filter((el: SettingsListType) => {
             if(el.id === id){
-                if(el.active === true) el.active = false
-                else el.active = true
+                el.value = value;
+                el.open = false;
             }
         })
-        setSwitches(copy)
+        setList(copy)
     }
-
-    function renderPopupFull() {
-        if (selectPopupFull !== null) {
-            const selectedList = SettingsListSelect.find((el_list: SettingsListSelectType) => el_list.id === selectPopupFull);
-            if (selectedList) {
-                const selectedData = SettingsListSelectDataPopup.find((el_data: SettingsListSelectDataPopupType) => el_data.id_select === selectPopupFull);
-                if (selectedData) {
-                    return (
-                        <PopupFull
-                            name={selectedList.name}
-                            content={
-                                <>
-                                    {
-                                        selectedData.data && selectedData.data.map((el:SettingsListSelectPopupType, index: number) => (
-                                            <div className="select-item-popup" key={index} onClick={() => setSelectPopupFull(null)}>
-                                                {el.value}
-                                            </div>
-                                        ))
-                                    }
-                                </>
-                            }
-                        />
-                    );
-                }
-            }
-        }
-        return null; // or some default value
-    }
-
 
   return (
     <div className="settings-content">
-        <div className="content__list--select">
-            {
-                SettingsListSelect && SettingsListSelect.map((el: SettingsListSelectType, index: number) => (
-                    <div className="select-item" key={index} onClick={() => setSelectPopupFull(el.id)}>
-                        <div className="item__left">
-                            <p className="left__name">{el.name}</p>
-                            <p className="left__value">{el.value}</p>
+        {
+            list && list.map((el: SettingsListType, index: number) => {
+                if(el.type === "dropdown"){
+                    return (
+                        <div className="content-item" key={index}>
+                            <p className="item__name">{el.name}</p>
+                            <div className="item__dropdown" onClick={() => openDropdown(el.id)}>
+                                <p className="dropdown__value">{el.value} {el.open ? (<IoIosArrowUp size={18}  />) : (<IoIosArrowDown size={18}  />)}</p>
+                                {
+                                    el.open ?
+                                    SettingsValuesList && SettingsValuesList.map((el_values: SettingsValuesType, index: number) => {
+                                        if(el_values.id === el.id_values){
+                                            return (
+                                                <div className="dropdown__list" key={index}>
+                                                    {
+                                                        el_values.values && el_values.values.map((el_item:SettingsValueType, index: number) => (
+                                                            <div className="list-item" key={index} onClick={(event: any) => selectValue(el_item.value, el.id, event)}>
+                                                                {el_item.value}
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </div>
+                                            )
+                                        }
+                                    })
+                                    : ""
+                                }
+                            </div>
                         </div>
-                        <div className="item__right">
-                            <MdArrowForwardIos size={24} />
+                    )
+                }else if(el.type === "button"){
+                    return (
+                        <div className="content-item">
+                            <p className="item__name">{el.name}</p>
+                            <button className="item__button">
+                                {el.text_button}
+                            </button>
                         </div>
-                    </div>
-                ))
-            }
-        </div>
-        <div className="content__list--switch">
-            {
-                switches && switches.map((el: SettingsListSwitchesType, index: number) => (
-                    <div className="switch-item" key={index} onClick={() => activeSwitch(el.id)}>
-                        <p className="item__name">{el.name}</p>
-                        <div className={`item__switch ${el.active ? "--active" : ""}`}>
-                            <div className="switch-point"></div>
+                    )
+                }else if(el.type === "text"){
+                    return (
+                        <div className="content-item">
+                            <p className="item__name">{el.name}</p>
+                            <p className="item__value">{el.value}</p>
                         </div>
-                    </div>
-                ))
-            }
-        </div>
-        {renderPopupFull()}
+                    )
+                }
+            })
+        }
     </div>
   )
 }
