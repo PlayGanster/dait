@@ -17,8 +17,22 @@ const LayoutTapbar = () => {
         setList(copy)
     }, [location.pathname])
 
+    function renderTopBar() {
+        if(location.pathname !== "/") return;
+        return (
+            <div className="tapbar__topmenu">
+                <ul className="topmenu__list">
+                    <li className="list-item" onClick={() => navigate("/friends")}>Магазин</li>
+                    <li className="list-item" onClick={() => navigate("/tasks")}>Задания</li>
+                    <li className="list-item" onClick={() => navigate("/referals")}>Рефералы</li>
+                </ul>
+            </div>
+        )
+    }
+
     return (
         <div className="layout-tapbar">
+            {renderTopBar()}
             <ul className="tapbar__list">
                 {
                     list.map((el: RouterNavBarType, index: number) => (
