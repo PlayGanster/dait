@@ -1,16 +1,16 @@
 .content-clicker {
     width: 100%;
-    height: calc(100% - 60px);
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
-    padding-bottom: 111px;
+    padding-bottom: 90px;
 
     .clicker__content {
         display: flex;
-        max-width: 400px;
+        flex-direction: column;
+        max-width: 300px;
         width: 100%;
-        justify-content: space-between;
         align-items: center;
         gap: 20px;
 
@@ -25,16 +25,23 @@
 
         .content__navigation {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            flex-direction: row;
+            gap: 30px;
+            background: #0D1117;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #3D444D;
 
             .navigation-item {
                 list-style: none;
                 cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
 
                 svg {
-                    width: 42px;
-                    height: 42px;
+                    width: 36px;
+                    height: 36px;
                     fill: #9198A1;
                     color: #9198A1!important;
 
@@ -48,18 +55,16 @@
     }
 }
 
-@media only screen and (max-height: 725px) {
-    .content-clicker {
-        .clicker__content {
-            max-width: 300px;
-        }
+@media only screen and (max-height: 900px) {
+    .content-clicker .clicker__content {
+        max-width: 200px;
     }
 }
 
-@media only screen and (min-height: 1100px) {
-    .content-clicker {
-        .clicker__content {
-            max-width: 500px;
-        }
+
+@media only screen and (max-height: 680px) {
+    .content-clicker .clicker__content .content__navigation .navigation-item svg {
+        width: 24px;
+        height: 24px;
     }
 }
