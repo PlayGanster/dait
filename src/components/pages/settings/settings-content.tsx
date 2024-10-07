@@ -3,13 +3,20 @@ import { SettingsListType, SettingsValueType, SettingsValuesType } from "@/types
 import "@styles/pages/settings/settings-content.scss"
 import { useEffect, useState } from "react"
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { useNavigate } from "react-router-dom"
+
+const telegram = window.Telegram.WebApp
 
 const SettingsContent = () => {
     const [list, setList] = useState<SettingsListType[]>([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         setList(SettingsList)
+        telegram.BackButton.show()
     }, [])
+
+    telegram.BackButton.onClick(() => navigate("/"))
 
     function openDropdown(id: number) {
         const copy: SettingsListType[] = [...list];
@@ -40,7 +47,7 @@ const SettingsContent = () => {
                     return (
                         <div className="content-item" key={index}>
                             <p className="item__name">{el.name}</p>
-                            <div className="item__dropdown" onClick={() => openDropdown(el.id)}>
+                            <div className={`item__dropdown ${el.open ? "--active" : ""}`} onClick={() => openDropdown(el.id)}>
                                 <p className="dropdown__value">{el.value} {el.open ? (<IoIosArrowUp size={18}  />) : (<IoIosArrowDown size={18}  />)}</p>
                                 {
                                     el.open ?
